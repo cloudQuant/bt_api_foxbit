@@ -1,0 +1,13 @@
+"""Tests for exchange_registers/register_foxbit.py."""
+
+from __future__ import annotations
+
+from bt_api_foxbit.registry_registration import register_foxbit
+
+
+class TestRegisterFoxbit:
+    """Tests for Foxbit registration module."""
+
+    def test_module_imports(self):
+        """Test module can be imported."""
+        assert register_foxbit is not None
