@@ -1,20 +1,189 @@
-# bt_api_foxbit
+# FOXBIT
 
-Foxbit exchange adapter for bt_api.
+Exchange plugin for bt_api framework.
 
-## Installation
+[![PyPI Version](https://img.shields.io/pypi/v/bt_api_foxbit.svg)](https://pypi.org/project/bt_api_foxbit/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/bt_api_foxbit.svg)](https://pypi.org/project/bt_api_foxbit/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/cloudQuant/bt_api_foxbit/actions/workflows/ci.yml/badge.svg)](https://github.com/cloudQuant/bt_api_foxbit/actions)
+[![Docs](https://readthedocs.org/projects/bt-api-foxbit/badge/?version=latest)](https://bt-api-foxbit.readthedocs.io/)
+
+---
+
+## English | [中文](#中文)
+
+### Overview
+
+This package provides **Foxbit exchange adapter for bt_api** for the [bt_api](https://github.com/cloudQuant/bt_api_py) framework. It offers a unified interface for interacting with **FOXBIT** exchange.
+
+### Features
+
+- Exchange integration with bt_api
+- REST API support
+- Market data access
+- Basic trading operations
+
+### Installation
 
 ```bash
 pip install bt_api_foxbit
 ```
 
-## Usage
+Or install from source:
+
+```bash
+git clone https://github.com/cloudQuant/bt_api_foxbit
+cd bt_api_foxbit
+pip install -e .
+```
+
+### Quick Start
 
 ```python
-from bt_api_foxbit import register_foxbit
-register_foxbit()
+from bt_api_foxbit import FoxbitApi
 
-from bt_api_py import BtApi
-api = BtApi(exchange_kwargs={"FOXBIT___SPOT": {"api_key": "...", "secret": "..."}})
-ticker = api.get_tick("FOXBIT___SPOT", "BTCBRL")
+# Initialize
+feed = FoxbitApi(api_key="your_key", secret="your_secret")
+
+# Get ticker data
+ticker = feed.get_ticker("BTCUSDT")
+print(ticker)
 ```
+
+### Supported Operations
+
+| Operation | Status |
+|-----------|--------|
+| Ticker | ✅ |
+| OrderBook | ✅ |
+| Trades | ✅ |
+| Bars/Klines | ✅ |
+| Orders | ✅ |
+| Balances | ✅ |
+| Positions | ✅ |
+
+### Online Documentation
+
+| Resource | Link |
+|----------|------|
+| English Docs | https://bt-api-foxbit.readthedocs.io/ |
+| Chinese Docs | https://bt-api-foxbit.readthedocs.io/zh/latest/ |
+| GitHub Repository | https://github.com/cloudQuant/bt_api_foxbit |
+| Issue Tracker | https://github.com/cloudQuant/bt_api_foxbit/issues |
+
+### Requirements
+
+- Python 3.9+
+- bt_api_base >= 0.15
+
+### Architecture
+
+```
+bt_api_foxbit/
+├── src/bt_api_foxbit/     # Source code
+│   ├── containers/     # Data containers
+│   ├── feeds/          # API feeds
+│   ├── gateway/       # Gateway adapter
+│   └── plugin.py      # Plugin registration
+├── tests/             # Unit tests
+└── docs/             # Documentation
+```
+
+### License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+### Support
+
+- Report bugs via [GitHub Issues](https://github.com/cloudQuant/bt_api_foxbit/issues)
+- Email: yunjinqi@gmail.com
+
+---
+
+## 中文
+
+### 概述
+
+本包为 [bt_api](https://github.com/cloudQuant/bt_api_py) 框架提供 **Foxbit exchange adapter for bt_api**。它提供了与 **FOXBIT** 交易所交互的统一接口。
+
+### 功能特点
+
+- bt_api交易所集成
+- REST API支持
+- 市场数据访问
+- 基本交易操作
+
+### 安装
+
+```bash
+pip install bt_api_foxbit
+```
+
+或从源码安装：
+
+```bash
+git clone https://github.com/cloudQuant/bt_api_foxbit
+cd bt_api_foxbit
+pip install -e .
+```
+
+### 快速开始
+
+```python
+from bt_api_foxbit import FoxbitApi
+
+# 初始化
+feed = FoxbitApi(api_key="your_key", secret="your_secret")
+
+# 获取行情数据
+ticker = feed.get_ticker("BTCUSDT")
+print(ticker)
+```
+
+### 支持的操作
+
+| 操作 | 状态 |
+|------|------|
+| Ticker | ✅ |
+| OrderBook | ✅ |
+| Trades | ✅ |
+| Bars/Klines | ✅ |
+| Orders | ✅ |
+| Balances | ✅ |
+| Positions | ✅ |
+
+### 在线文档
+
+| 资源 | 链接 |
+|------|------|
+| 英文文档 | https://bt-api-foxbit.readthedocs.io/ |
+| 中文文档 | https://bt-api-foxbit.readthedocs.io/zh/latest/ |
+| GitHub 仓库 | https://github.com/cloudQuant/bt_api_foxbit |
+| 问题反馈 | https://github.com/cloudQuant/bt_api_foxbit/issues |
+
+### 系统要求
+
+- Python 3.9+
+- bt_api_base >= 0.15
+
+### 架构
+
+```
+bt_api_foxbit/
+├── src/bt_api_foxbit/     # 源代码
+│   ├── containers/     # 数据容器
+│   ├── feeds/          # API 源
+│   ├── gateway/        # 网关适配器
+│   └── plugin.py       # 插件注册
+├── tests/             # 单元测试
+└── docs/             # 文档
+```
+
+### 许可证
+
+MIT 许可证 - 详见 [LICENSE](LICENSE)。
+
+### 技术支持
+
+- 通过 [GitHub Issues](https://github.com/cloudQuant/bt_api_foxbit/issues) 反馈问题
+- 邮箱: yunjinqi@gmail.com
