@@ -34,10 +34,10 @@ class FoxbitRequestTickerData(TickerData):
         self.has_been_init_data = False
 
     @classmethod
-    def from_json(cls, data: dict[str, Any]) -> "FoxbitRequestTickerData":
+    def from_json(cls, data: dict[str, Any]) -> FoxbitRequestTickerData:
         return cls(data, has_been_json_encoded=True)
 
-    def init_data(self) -> "FoxbitRequestTickerData":
+    def init_data(self) -> FoxbitRequestTickerData:
         if not self.has_been_json_encoded:
             self.ticker_data = (
                 json.loads(self.ticker_info)

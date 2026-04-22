@@ -1,4 +1,5 @@
 from bt_api_base.feeds.capability import Capability
+
 from bt_api_foxbit.feeds.live_foxbit.request_base import FoxbitRequestData
 
 

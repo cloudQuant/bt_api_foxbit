@@ -15,3 +15,15 @@ Homepage = "https://github.com/cloudQuant/bt_api"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/bt_api_foxbit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["I", "UP", "E", "F", "W", "E999", "TRY003"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["I001", "UP037"]

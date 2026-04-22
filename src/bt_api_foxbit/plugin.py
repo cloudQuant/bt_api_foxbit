@@ -6,8 +6,8 @@ from bt_api_base.registry import ExchangeRegistry
 
 
 def register_foxbit() -> None:
-    from bt_api_foxbit.feeds.live_foxbit.spot import FoxbitRequestDataSpot
     from bt_api_foxbit.exchange_data import FoxbitExchangeDataSpot
+    from bt_api_foxbit.feeds.live_foxbit.spot import FoxbitRequestDataSpot
 
     ExchangeRegistry.register_feed("FOXBIT___SPOT", FoxbitRequestDataSpot)
     ExchangeRegistry.register_exchange_data("FOXBIT___SPOT", FoxbitExchangeDataSpot)
