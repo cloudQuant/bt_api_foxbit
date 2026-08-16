@@ -1,6 +1,8 @@
+"""Module-level docstring."""
 from unittest.mock import MagicMock
 from bt_api_foxbit.feeds.live_foxbit.request_base import FoxbitRequestData
 def test_foxbit_disconnect_closes_http_client() -> None:
+    """test_foxbit_disconnect_closes_http_client function"""
     request_data = FoxbitRequestData()
     request_data._http_client.close = MagicMock()
 

@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 from bt_api_base.balance_utils import simple_balance_handler
@@ -6,6 +7,7 @@ from bt_api_base.registry import ExchangeRegistry
 
 
 def register_foxbit() -> None:
+    """register_foxbit function"""
     from bt_api_foxbit.exchange_data import FoxbitExchangeDataSpot
     from bt_api_foxbit.feeds.live_foxbit.spot import FoxbitRequestDataSpot
 
@@ -15,6 +17,7 @@ def register_foxbit() -> None:
 
 
 def plugin_info() -> PluginInfo:
+    """plugin_info function"""
     from bt_api_foxbit import __version__
 
     return PluginInfo(

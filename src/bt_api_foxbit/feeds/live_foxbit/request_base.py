@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import hashlib
@@ -14,9 +15,11 @@ from bt_api_foxbit.exchange_data import FoxbitExchangeDataSpot
 
 
 class FoxbitRequestData(Feed):
+    """Class FoxbitRequestData"""
     _exchange_data = FoxbitExchangeDataSpot()
 
     def __init__(self, data_queue: Any = None, **kwargs: Any) -> None:
+        """__init__ method"""
         super().__init__(data_queue, **kwargs)
         self.exchange_name = kwargs.get("exchange_name", "FOXBIT___SPOT")
         self.asset_type = kwargs.get("asset_type", "SPOT")
@@ -76,6 +79,7 @@ class FoxbitRequestData(Feed):
         extra_data: Any = None,
         timeout: float = 10.0,
     ) -> RequestData:
+        """request method"""
         json_body = body if isinstance(body, dict) else None
         response = self._http_client.request(
             method="GET",
@@ -94,6 +98,7 @@ class FoxbitRequestData(Feed):
         extra_data: Any = None,
         timeout: float = 10.0,
     ) -> RequestData:
+        """async_request method"""
         json_body = body if isinstance(body, dict) else None
         response = await self._http_client.async_request(
             method="GET",
@@ -105,15 +110,19 @@ class FoxbitRequestData(Feed):
         return RequestData(response, extra_data)
 
     def async_callback(self, future: Any) -> None:
+        """async_callback method"""
         if self.data_queue is None:
             return
         self.data_queue.put(future.result())
 
     def connect(self) -> None:
+        """connect method"""
         return None
 
     def is_connected(self) -> bool:
+        """is_connected method"""
         return True
 
     def disconnect(self) -> None:
+        """disconnect method"""
         super().disconnect()

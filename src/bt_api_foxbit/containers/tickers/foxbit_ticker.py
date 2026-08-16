@@ -1,3 +1,4 @@
+"""Module-level docstring."""
 from __future__ import annotations
 
 import json
@@ -8,6 +9,7 @@ from bt_api_base.containers.tickers.ticker import TickerData
 
 
 class FoxbitRequestTickerData(TickerData):
+    """Class FoxbitRequestTickerData"""
     def __init__(
         self,
         ticker_info: str | dict[str, Any],
@@ -15,6 +17,7 @@ class FoxbitRequestTickerData(TickerData):
         asset_type: str = "SPOT",
         has_been_json_encoded: bool = False,
     ) -> None:
+        """__init__ method"""
         super().__init__(ticker_info, has_been_json_encoded)
         self.exchange_name = "FOXBIT"
         self.local_update_time = time.time()
@@ -35,9 +38,11 @@ class FoxbitRequestTickerData(TickerData):
 
     @classmethod
     def from_json(cls, data: dict[str, Any]) -> FoxbitRequestTickerData:
+        """from_json method"""
         return cls(data, has_been_json_encoded=True)
 
     def init_data(self) -> FoxbitRequestTickerData:
+        """init_data method"""
         if not self.has_been_json_encoded:
             self.ticker_data = (
                 json.loads(self.ticker_info)
@@ -62,45 +67,57 @@ class FoxbitRequestTickerData(TickerData):
         return self
 
     def get_exchange_name(self) -> str:
+        """get_exchange_name method"""
         return self.exchange_name
 
     def get_local_update_time(self) -> float:
+        """get_local_update_time method"""
         return self.local_update_time
 
     def get_symbol_name(self) -> str:
+        """get_symbol_name method"""
         return self.symbol_name
 
     def get_ticker_symbol_name(self) -> str | None:
+        """get_ticker_symbol_name method"""
         self.init_data()
         return self.ticker_symbol_name
 
     def get_asset_type(self) -> str:
+        """get_asset_type method"""
         return self.asset_type
 
     def get_server_time(self) -> float | None:
+        """get_server_time method"""
         self.init_data()
         return self.server_time
 
     def get_bid_price(self) -> float | None:
+        """get_bid_price method"""
         self.init_data()
         return self.bid_price
 
     def get_ask_price(self) -> float | None:
+        """get_ask_price method"""
         self.init_data()
         return self.ask_price
 
     def get_bid_volume(self) -> float | None:
+        """get_bid_volume method"""
         self.init_data()
         return self.bid_volume
 
     def get_ask_volume(self) -> float | None:
+        """get_ask_volume method"""
         self.init_data()
         return self.ask_volume
 
     def get_last_price(self) -> float | None:
+        """get_last_price method"""
         self.init_data()
         return self.last_price
 
     def get_last_volume(self) -> float | None:
+        """get_last_volume method"""
         self.init_data()
         return self.last_volume
