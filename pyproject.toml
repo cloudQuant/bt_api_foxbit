@@ -27,3 +27,6 @@ ignore = []
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/**" = ["I001", "UP037"]
+
+[project.entry-points."bt_api.plugins"]
+foxbit = "bt_api_foxbit.plugin:register_plugin"

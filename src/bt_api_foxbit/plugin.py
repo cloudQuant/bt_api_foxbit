@@ -1,30 +1,27 @@
 """Module-level docstring."""
+# generated, verify register call
+
 from __future__ import annotations
 
-from bt_api_base.balance_utils import simple_balance_handler
+from typing import TYPE_CHECKING, Any
+
 from bt_api_base.plugins.protocol import PluginInfo
-from bt_api_base.registry import ExchangeRegistry
+
+from bt_api_foxbit.registry_registration import register
+from bt_api_foxbit import __version__
+
+if TYPE_CHECKING:
+    from bt_api_base.registry import ExchangeRegistry
 
 
-def register_foxbit() -> None:
-    """register_foxbit function"""
-    from bt_api_foxbit.exchange_data import FoxbitExchangeDataSpot
-    from bt_api_foxbit.feeds.live_foxbit.spot import FoxbitRequestDataSpot
-
-    ExchangeRegistry.register_feed("FOXBIT___SPOT", FoxbitRequestDataSpot)
-    ExchangeRegistry.register_exchange_data("FOXBIT___SPOT", FoxbitExchangeDataSpot)
-    ExchangeRegistry.register_balance_handler("FOXBIT___SPOT", simple_balance_handler)
-
-
-def plugin_info() -> PluginInfo:
-    """plugin_info function"""
-    from bt_api_foxbit import __version__
+def register_plugin(registry: ExchangeRegistry, runtime_factory: Any) -> PluginInfo:
+    """register_plugin function"""
+    register()
 
     return PluginInfo(
-        name="Foxbit",
+        name="bt_api_foxbit",
         version=__version__,
-        core_requires="bt_api_base",
+        core_requires=">=0.15,<1.0",
         supported_exchanges=("FOXBIT___SPOT",),
         supported_asset_types=("SPOT",),
-        plugin_module="bt_api_foxbit",
     )
